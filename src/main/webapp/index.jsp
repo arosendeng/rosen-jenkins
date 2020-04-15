@@ -6,6 +6,8 @@
 <body>
 如果看到此页面，代表项目部署成功啦！--这是master分支
 <a href="/addUser">添加用户</a>
+<a href="/addUser">添加用户</a>
+<a href="/addUser">添加用户</a>
 <hr/>
 <a href="/updateUser">修改用户</a>
 <hr>
