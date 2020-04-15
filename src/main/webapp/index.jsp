@@ -8,6 +8,10 @@
 <a href="/addUser">添加用户</a>
 <a href="/addUser">添加用户</a>
 <a href="/addUser">添加用户</a>
+
+<a href="/addUser">用户配置</a>
+<a href="/addUser">用户配置</a>
+<a href="/addUser">用户配置</a>
 <hr/>
 <a href="/updateUser">修改用户</a>
 <a href="/updateUser">修改用户</a>
