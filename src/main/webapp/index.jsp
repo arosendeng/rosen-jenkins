@@ -10,6 +10,11 @@
 <a href="/addUser">添加用户</a>
 <hr/>
 <a href="/updateUser">修改用户</a>
+<a href="/updateUser">修改用户</a>
+<a href="/updateUser">修改用户</a>
+<a href="/updateUser">修改用户</a>
+<a href="/updateUser">修改用户</a>
+<a href="/updateUser">修改用户</a>
 <hr>
 <a href="deleteUser">删除用户</a>
 <a href="/findUser">查询用户</a>
