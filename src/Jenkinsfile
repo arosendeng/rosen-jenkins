@@ -18,4 +18,9 @@ pipeline {
          }
       }      
    }
+      post {
+         always {
+         emailext body: '${FILE,path="src/email.html"}', subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}', to: '505553432@qq.com'
+            }
+      }
 }
