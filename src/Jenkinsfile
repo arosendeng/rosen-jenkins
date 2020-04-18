@@ -23,7 +23,7 @@ pipeline {
             telegramSend(message:'${PROJECT_NAME}：Success',chatId:-336251068)
          }
          failure {
-            telegramSend(message:'${PROJECT_NAME}：Failure',chatId:-336251068)
+            telegramSend(message:'PROJECT_NAME：Failure',chatId:-336251068)
          }
    }
 }
