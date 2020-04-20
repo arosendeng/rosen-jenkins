@@ -18,12 +18,10 @@ pipeline {
          }
       }      
    }
-      post {
-         success {
-            telegramSend(message:'${PROJECT_NAME}：Success',chatId:-336251068)
+   post{
+        always {  //不管成功失败都会发送信息,youid是发送的组id
+            telegramSend(message:'${PROJECT_NAME}:${BUILD_STATUS}',chatId:-336251068)
          }
-         failure {
-            telegramSend(message:'PROJECT_NAME：Failure',chatId:-336251068)
-         }
+      }
    }
 }
