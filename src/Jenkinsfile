@@ -13,7 +13,7 @@ pipeline {
          }
       }
       stage('SonarQube代码审查') {
-          steps {
+          script {
             scannerHome = tool 'sonar-scanner'
           }
        withSonarQubeEnv('sonarqube') {
