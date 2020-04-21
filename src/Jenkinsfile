@@ -7,18 +7,18 @@ pipeline {
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ed3147fc-c68b-418c-a479-15dd80710051', url: 'git@github.com:arosendeng/rosen-jenkins.git']]])
          }
       }
-      stage('SonarQube代码审查') {
-         script {
-            scannerHome = tool 'sonar-scanner'
-             }
-       withSonarQubeEnv('sonarqube') {
-         sh "${scannerHome}/bin/sonar-scanner"
-             }
-      }
       stage('build projeck') {
          steps {
             sh 'mvn clean package'
          }
+      }
+      stage('SonarQube代码审查') {
+          steps {
+            scannerHome = tool 'sonar-scanner'
+          }
+       withSonarQubeEnv('sonarqube') {
+            sh "${scannerHome}/bin/sonar-scanner"
+          }
       }
       stage('push code') {
          steps {
