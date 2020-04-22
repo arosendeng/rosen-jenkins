@@ -12,9 +12,9 @@ pipeline {
             sh label: '', script: 'mvn clean package'
          }
       }
-      stage('SonarQube') {
+      stage('Code detection') {
          steps{
-            sh label: '', script: 'echo "ok"'
+            sh label: '', script: 'echo ok'
               }
       }
       stage('push code') {
