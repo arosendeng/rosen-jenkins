@@ -14,10 +14,7 @@ pipeline {
       }
       stage('SonarQube') {
          steps{
-             sh label: '', script: 'scannerHome = tool  "sonar-scanner"'
-             withSonarQubeEnv('jenkins') {
-             sh label: '', script: '"${scannerHome}/bin/sonar-scanner"'
-                    }
+            sh label: '', script: 'echo "ok"'
               }
       }
       stage('push code') {
