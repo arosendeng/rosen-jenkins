@@ -14,11 +14,9 @@ pipeline {
       }
       stage('SonarQube') {
          steps{
-            script {
-               scannerHome = tool 'sonar-scanner'
-              }
-         withSonarQubeEnv('jenkins') {
-            sh "${scannerHome}/bin/sonar-scanner"
+             sh label: '', script: 'scannerHome = tool  "sonar-scanner"'
+             withSonarQubeEnv('jenkins') {
+             sh label: '', script: '"${scannerHome}/bin/sonar-scanner"'
                     }
               }
       }
@@ -28,4 +26,13 @@ pipeline {
          }
       }      
    }
+ post {
+   always {
+    emailext(
+      subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} -${BUILD_STATUS}!',
+      body: '${FILE,path="src/email.html"}',
+      to: '50555432@qq.com'
+            )
+          }
+      }
 }
