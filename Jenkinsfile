@@ -9,10 +9,10 @@ pipeline {
       }
       stage('build projeck') {
          steps {
-            sh 'mvn clean package'
+            sh label: '', script: 'mvn clean package'
          }
       }
-      stage('SonarQube代码审查') {
+      stage('SonarQube') {
          steps{
             script {
                scannerHome = tool 'sonar-scanner'
