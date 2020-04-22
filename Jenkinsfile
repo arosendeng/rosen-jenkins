@@ -4,40 +4,18 @@ pipeline {
    stages {
       stage('pull code') {
          steps {
-            checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'b632ed00-fc81-43c8-a746-5aa0673b2658', url: 'git@192.168.66.100:itheima_group/web_demo.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ed3147fc-c68b-418c-a479-15dd80710051', url: 'git@github.com:arosendeng/rosen-jenkins.git']]])
          }
       }
-      stage('code checking') {
-         steps {
-
-            script {
-                 //引入SonarQubeScanner工具
-                scannerHome = tool 'sonar-scanner'
-            }
-            //引入SonarQube的服务器环境
-            withSonarQubeEnv('sonarqube') {
-                sh "${scannerHome}/bin/sonar-scanner"
-            }
-         }
-      }
-      stage('build project') {
+      stage('build projeck') {
          steps {
             sh 'mvn clean package'
          }
       }
-      stage('publish project') {
+      stage('push code') {
          steps {
-            deploy adapters: [tomcat8(credentialsId: 'fc23e5b7-9930-4dfb-af66-a2a576be52fb', path: '', url: 'http://192.168.66.102:8080')], contextPath: null, war: 'target/*.war'
+             deploy adapters: [tomcat9(credentialsId: 'b1ca6678-8339-43bb-a0da-c3935c509dc2', path: '', url: 'http://161.117.63.177:8080/')], contextPath: null, war: 'target/*.war'
          }
-      }
-   }
-   post {
-         always {
-            emailext(
-               subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!',
-               body: '${FILE,path="email.html"}',
-               to: '1014671449@qq.com'
-            )
-         }
+      }      
    }
 }
