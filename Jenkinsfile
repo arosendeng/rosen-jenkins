@@ -30,11 +30,7 @@ pipeline {
    }
     post {
         always {
-            emailext(
-                subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} -${BUILD_STATUS}!',
-                body: '${FILE,path="src/email.html"}',
-                to: '50555432@qq.com'
-                    )
+            emailext body: '${FILE,path="src/email.html"}', subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}', to: '505553432@qq.com'
                 }
         }
 }
