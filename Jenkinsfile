@@ -36,7 +36,7 @@ pipeline {
             emailext(
                subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!',
                body: '${FILE,path="email.html"}',
-               to: '1014671449@qq.com'
+               to: '505553432@qq.com'
             )
          }
    }
